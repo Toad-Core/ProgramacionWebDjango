@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Portal Talento Escolar{% endblock %}
+
+{% block content %}
+<div id="carruselCategorias" class="carousel slide shadow mb-5 rounded overflow-hidden" data-bs-ride="carousel">
+    
+    <div class="carousel-indicators">
+        {% for cat in CATEGORIAS_MENU %}
+            <button type="button" data-bs-target="#carruselCategorias" data-bs-slide-to="{{ forloop.counter0 }}" 
+                {% if forloop.first %}class="active" aria-current="true"{% endif %} 
+                aria-label="Slide {{ forloop.counter }}">
+            </button>
+        {% endfor %}
+    </div>
+    
+    <div class="carousel-inner">
+        {% for cat in CATEGORIAS_MENU %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="4000">
+                
+                <img src="{% static 'img/' %}{{ cat.slug }}.jpg" class="d-block w-100 img-carousel" alt="{{ cat.nombre_visible }}">
+                
+                <div class="carousel-caption">
+                    <a href="{% url 'categoria' cat.slug %}" class="text-decoration-none text-white">
+                        <h2 class="fw-bold m-0">{{ cat.nombre_visible }}</h2>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselCategorias" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselCategorias" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<section class="p-5 rounded shadow bg-white text-center mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <h1 class="display-5 fw-bold titulo-custom mb-4">Portal Talento Escolar</h1>
+            <p class="lead fs-4 text-secondary mb-4">
+                Bienvenido a nuestra plataforma de talentos escolares, un espacio creado para descubrir, potenciar y dar visibilidad a las habilidades de estudiantes en diversas áreas.
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'contacto' %}" class="btn btn-custom btn-lg px-5 gap-3 shadow-sm">Postula tu talento</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

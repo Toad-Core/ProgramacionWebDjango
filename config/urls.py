@@ -19,6 +19,11 @@ from django.urls import path
 from core import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('contacto/', views.contacto, name='contacto'),
+    
+    # URLs dinámicas para categorías y fichas de alumnos
+    path('categoria/<str:nombre_categoria>/', views.categoria, name='categoria'),
+    path('ficha/<str:nombre_url>/', views.ficha, name='ficha'),
 ]

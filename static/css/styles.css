@@ -1,0 +1,252 @@
+/* PALETA DE COLORES */
+:root {
+    --color-espresso: #443731;      /* Textos principales */
+    --color-oscuro: #5C4E43;        /* Navbar y Footer */
+    --color-marron: #8B7365;        /* Botones y Títulos */
+    --color-naranja: #B59A83;       /* Hover y bordes activos */
+    --color-latte: #C7BCAE;         /* Bordes inactivos y textos secundarios */
+    --color-crema: #E6DFD7;         /* Fondo general de la página */
+    --color-crema-claro: #EFEBE3;   /* Inputs del formulario */
+    --color-espuma: #F6F4F0;        /* Tarjetas y contenedores */
+    --text-claro: #FAFAF8;          /* Para textos sobre fondos oscuros */
+}
+
+/* CONFIGURACIONES GLOBALES Y ESTRUCTURA */
+body {
+    background-color: var(--color-crema);
+    color: var(--color-espresso);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+section, .bg-white, .bg-light {
+    background-color: var(--color-espuma) !important;
+    border: 1px solid var(--color-crema-claro);
+    border-radius: 0.75rem;
+}
+
+.contenedor-principal {
+    background-color: var(--color-espuma) !important;
+    border: 1px solid var(--color-crema-claro);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    max-width: 960px;
+}
+
+/* TIPOGRAFÍAS Y TEXTOS */
+.titulo-custom, .titulo {
+    color: var(--color-marron) !important;
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-espresso);
+}
+
+.text-muted, .text-secondary {
+    color: var(--color-marron) !important;
+}
+
+.texto-edad strong {
+    color: var(--color-marron);
+}
+
+/* NAVBAR Y FOOTER */
+.fondo-custom {
+    background-color: var(--color-oscuro) !important;
+    border-bottom: 3px solid var(--color-marron);
+}
+
+footer.fondo-custom {
+    border-top: 3px solid var(--color-marron);
+    border-bottom: none;
+    color: var(--text-claro) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--color-crema-claro) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--text-claro) !important;
+}
+
+/* TARJETAS, COMPONENTES VISUALES Y CARRUSEL */
+.tarjeta-custom, .tarjeta {
+    border: 2px solid var(--color-latte) !important;
+    background-color: var(--color-espuma) !important;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.25s ease-in-out;
+}
+
+.tarjeta-custom:hover, .tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-naranja) !important;
+    box-shadow: 0 10px 20px rgba(56, 36, 23, 0.12); 
+}
+
+.img-tarjeta, .img-ficha {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+    border-bottom: 2px solid var(--color-crema-claro);
+    filter: sepia(12%) contrast(95%);
+}
+
+.badge {
+    background-color: var(--color-naranja) !important;
+    color: var(--color-espresso) !important;
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+}
+
+.img-carousel {
+    height: 400px;
+    object-fit: cover;
+    filter: brightness(85%) sepia(20%);
+}
+
+.carousel-caption {
+    background: rgba(68, 55, 49, 0.85) !important; 
+    border: 1px solid var(--color-marron);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.carousel-caption h2,
+.carousel-caption a {
+    color: var(--text-claro) !important;
+}
+
+/* BOTONES E INTERACCIÓN */
+.btn-custom, .btn-azul {
+    background-color: var(--color-marron) !important;
+    color: var(--text-claro) !important;
+    border: 1px solid var(--color-espresso) !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-custom:hover, .btn-azul:hover {
+    background-color: var(--color-naranja) !important;
+    border-color: var(--color-marron) !important;
+}
+
+.btn:disabled, button:disabled {
+    background-color: var(--color-crema-claro) !important;
+    color: var(--color-latte) !important;
+    border-color: var(--color-crema) !important;
+    opacity: 0.5; 
+    cursor: not-allowed;
+}
+
+/* FORMULARIOS, TABS Y ETIQUETAS FLOTANTES */
+.form-control, 
+.form-select, 
+textarea, 
+input[type="text"], 
+input[type="number"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="file"] {
+    background-color: var(--color-crema-claro) !important; 
+    border: 1px solid var(--color-latte) !important;
+    color: var(--color-espresso) !important;
+}
+
+.form-control:focus, 
+.form-select:focus, 
+textarea:focus {
+    background-color: var(--text-claro) !important;
+    border-color: var(--color-naranja) !important;
+    color: var(--color-espresso) !important;
+    box-shadow: 0 0 0 0.25rem rgba(197, 121, 56, 0.25) !important;
+}
+
+.form-control:disabled, 
+.form-select:disabled {
+    background-color: var(--color-crema-claro) !important;
+    color: var(--color-latte) !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-espresso) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--color-crema-claro) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-text, .mb-3 small {
+    color: var(--color-marron) !important;
+}
+
+/* Etiquetas flotantes */
+.form-floating > .form-control,
+.form-floating > .form-select {
+    padding: 1rem 0.75rem !important;
+    height: 3.5rem !important;
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem !important;
+    color: var(--color-latte) !important;
+}
+
+.form-floating > .form-control::placeholder {
+    color: transparent !important;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+    color: var(--color-marron) !important;
+    opacity: 1 !important;
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+}
+
+/* Tabs */
+.nav-tabs {
+    border-bottom: 2px solid var(--color-crema-claro);
+}
+
+.nav-tabs .nav-link {
+    color: var(--color-marron);
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--color-espuma) !important;
+    border-color: var(--color-crema-claro) var(--color-crema-claro) transparent !important;
+    color: var(--color-espresso) !important;
+}
+
+.nav-tabs .nav-link:disabled, 
+.nav-link.disabled {
+    background-color: var(--color-crema-claro) !important;
+    color: var(--color-latte) !important;
+    border-color: var(--color-crema) !important;
+    opacity: 0.5; 
+    cursor: not-allowed;
+}
+
+/* MODALES */
+.modal-content {
+    background-color: var(--color-espuma);
+    border: 2px solid var(--color-marron);
+    color: var(--color-espresso);
+}

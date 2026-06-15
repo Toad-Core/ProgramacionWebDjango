@@ -4,25 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Fredy Bohle">
+    <meta name="description" content="Portal Talento Escolar: Descubre y potencia los talentos de estudiantes en diversas áreas.">
     <title>{% block title %}Portal Talento Escolar{% endblock %}</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     
     {% block extra_head %}{% endblock %}
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fondo-custom sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fondo-custom sticky-top shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="/">Talento Escolar</a>
+            <a class="navbar-brand fw-bold" href="{% url 'index' %}">Talento Escolar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contacto/">Contacto</a></li>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for cat in CATEGORIAS_MENU %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'categoria' cat.slug %}">
+                                        {{ cat.nombre_visible }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -32,7 +50,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="text-center py-4 text-white fondo-custom">
+    <footer class="text-center py-4 text-white fondo-custom mt-auto">
         <p class="mb-0">Fredy Bohle</p>
         <p class="mb-0">Talentos escolares &copy; 2026</p>
     </footer>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ficha de {{ alumno.nombre }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4 tarjeta-custom shadow text-center">
+            
+            <div class="mb-4">
+                <img src="{% static 'img/' %}{{ alumno.nombre_url }}.jpg" class="img-fluid rounded-circle border border-3 img-ficha" alt="{{ alumno.nombre }}" style="width: 200px; height: 200px; object-fit: cover; border-color: var(--color-marron) !important;">            </div>
+
+            <h1 class="fw-bold titulo-custom mb-2">{{ alumno.nombre }}</h1>
+            
+            <div class="mb-3">
+                <span class="badge rounded-pill fs-6 shadow-sm">{{ alumno.especialidad }}</span>
+            </div>
+            
+            <p class="text-muted fs-5 mb-1 texto-edad">
+                <strong>Edad:</strong> {{ alumno.edad }} años
+            </p>
+            
+            <hr class="my-4" style="border-color: var(--color-crema-claro);">
+            
+            <p class="fs-5 text-start px-3" style="line-height: 1.6; color: var(--color-espresso);">
+                {{ alumno.descripcion }}
+            </p>
+            
+            <div class="mt-4">
+                <a href="javascript:history.back()" class="btn btn-custom px-5 py-2 shadow-sm">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Categoría: {{ titulo_categoria }} - Portal Talento{% endblock %}
+
+{% block content %}
+<div class="row mb-5 mt-3">
+    <div class="col-12 text-center">
+        <h1 class="fw-bold titulo-custom display-5 mb-3">{{ titulo_categoria }}</h1>
+        <p class="text-muted fs-5">Conoce a nuestros estudiantes destacados en esta área.</p>
+    </div>
+</div>
+
+<div class="row g-4 justify-content-center">
+    {% for alumno in alumnos %}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 tarjeta-custom shadow-sm">
+            
+            <img src="{% static 'img/' %}{{ alumno.nombre_url }}.jpg" class="card-img-top img-tarjeta" alt="{{ alumno.nombre }}">
+            
+            <div class="card-body d-flex flex-column text-center p-4">
+                <h4 class="card-title fw-bold titulo-custom mb-3">{{ alumno.nombre }}</h4>
+                
+                <div class="mb-3">
+                    <span class="badge rounded-pill shadow-sm">{{ alumno.especialidad }}</span>
+                </div>
+                
+                <p class="card-text flex-grow-1 text-muted text-start" style="font-size: 0.95rem;">
+                    {{ alumno.descripcion|truncatewords:15 }}
+                </p>
+                
+                <a href="{% url 'ficha' alumno.nombre_url %}" class="btn btn-custom mt-3 w-100 py-2">Ver expediente</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <p class="text-muted fs-4">Aún no hay expedientes registrados en esta categoría.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
